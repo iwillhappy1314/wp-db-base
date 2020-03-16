@@ -2,6 +2,11 @@
 
 namespace WPDBase;
 
+// Exit if accessed directly
+if ( ! defined('ABSPATH')) {
+    exit;
+}
+
 /**
  * 创建需要的数据表
  *
