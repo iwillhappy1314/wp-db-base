@@ -77,7 +77,7 @@ abstract class DB
      * @return  object
      * @since   2.1
      */
-    public function get($row_id)
+    public function get_row($row_id)
     {
         global $wpdb;
 
@@ -93,7 +93,7 @@ abstract class DB
      * @return  object
      * @since   2.1
      */
-    public function get_by($column, $row_id)
+    public function get_row_by($column, $row_id)
     {
         global $wpdb;
         $column = esc_sql($column);
