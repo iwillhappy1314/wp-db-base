@@ -77,7 +77,7 @@ abstract class DB
      * @return  object
      * @since   2.1
      */
-    public function get($row_id)
+    public function get_row($row_id)
     {
         global $wpdb;
 
@@ -88,17 +88,17 @@ abstract class DB
      * 根据指定的列/值获取一行数据
      *
      * @param string $column 列名
-     * @param int    $row_id 主键
+     * @param string $value  列值
      *
      * @return  object
      * @since   2.1
      */
-    public function get_by($column, $row_id)
+    public function get_row_by($column, $value)
     {
         global $wpdb;
         $column = esc_sql($column);
 
-        return $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE $column = %s LIMIT 1;", $row_id));
+        return $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE $column = %s LIMIT 1;", $value));
     }
 
     /**
