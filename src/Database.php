@@ -58,8 +58,16 @@ abstract class Database
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
         $table_schema = $this->setTables();
-        foreach ($table_schema as $table) {
-            dbDelta($table);
+        $version_key  = md5(serialize($table_schema));
+
+        $version_match = get_option($version_key, false);
+
+        if ( ! $version_match) {
+            foreach ($table_schema as $table) {
+                dbDelta($table);
+            }
+
+            update_option($version_key, 1);
         }
 
     }
